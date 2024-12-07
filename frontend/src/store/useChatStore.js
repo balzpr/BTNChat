@@ -52,10 +52,16 @@ export const useChatStore = create((set, get) => ({
     const socket = useAuthStore.getState().socket;
 
     socket.on("newMessage", (newMessage) => {
-      if(newMessage.senderId !== selectedUser._id) return;
+      if (newMessage.senderId !== selectedUser._id) return;
       set({
         messages: [...get().messages, newMessage],
       });
+      if (Notification.permission === "granted") {
+        new Notification("New Message", {
+          body: `${selectedUser.fullName || "Someone"}: ${newMessage.text || "New message received!"}`,
+          icon: "../assets/react.svg",
+        });
+      }
     });
   },
 
@@ -64,6 +70,5 @@ export const useChatStore = create((set, get) => ({
     socket.off("newMessage");
   },
 
-  
   setSelectedUser: (selectedUser) => set({selectedUser}),
 }));
