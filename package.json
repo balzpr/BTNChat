@@ -9,17 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-<<<<<<< HEAD
-  "engines": {
-    "node": "18.x",
-    "npm": "9.x"
-  }
-=======
-
-  "engines": {
-  "node": "18.x",
-  "npm": "9.x"
-}
->>>>>>> 9280acc427ff136f320a718a37b11cd95a9db683
+  "description": ""
 }
